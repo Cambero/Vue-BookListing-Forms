@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <h1>{{title}}</h1>
-    <ul>
-      <book-item v-for='book in books' :key='book.id' :book='book'></book-item>
-    </ul>
-    <br><hr>
-    <book-form @addBook='appendBook'></book-form>
-  </div>
+<div>
+  <h1>{{title}}</h1>
+  <ul>
+    <book-item v-for='book in books' :key='book.id' :book='book'></book-item>
+  </ul>
+  <br>
+  <hr>
+  <book-form @addBook='appendBook'></book-form>
+</div>
 </template>
 
 <script>
@@ -19,10 +20,21 @@ export default {
     return {
       title: "All Books",
       states: ["Want to Read", "Read", "Reading"],
-      books: [
-        { title: "Self-Reliance", author: "Ralph Waldo Emerson", finishedReading: true },
-        { title: "American Gods", author: "Neil Gaiman", finishedReading: false },
-        { title: "Amusing Ourselves to Death", author: "Neil Postman", finishedReading: true }
+      books: [{
+          title: "Self-Reliance",
+          author: "Ralph Waldo Emerson",
+          finishedReading: true
+        },
+        {
+          title: "American Gods",
+          author: "Neil Gaiman",
+          finishedReading: false
+        },
+        {
+          title: "Amusing Ourselves to Death",
+          author: "Neil Postman",
+          finishedReading: true
+        }
       ]
     };
   },
@@ -33,10 +45,10 @@ export default {
   methods: {
     appendBook(bookData) {
       this.books.push({
-                        title: bookData.bookTitle,
-                        author: bookData.Author,
-                        finishedReading: bookData.finishedReading
-                      });
+        title: bookData.bookTitle,
+        author: bookData.bookAuthor,
+        finishedReading: bookData.finishedReading
+      });
     }
   }
 };
@@ -47,6 +59,7 @@ h1,
 h2 {
   font-weight: normal;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
